@@ -24,9 +24,17 @@ public class Application {
 	}
 
 	private static void processInput(String input) {
-		
+		if(input.length=0){
+			System.out.println("input value cannot be null");
+		}
+		input=input.trim();
 		String[] inputParams = input.split(",");
-		String inputParams2 =input.trim();
+		try{
+			int action = Integer.parseInt(inputParams[0]);
+	}catch(NumberFormatException e|){
+	System.out.println("ERROR: need a number");
+	return;
+	}
 
 int action = Integer.parseInt(inputParams[0]);
 

@@ -1,14 +1,16 @@
-package examplepackage;
+package simwp;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
-public class Example {
-
+public class FileOperations {
 	public static void createDirectory(String dir) throws IOException {
 		try {
 			Files.createDirectories(Paths.get(dir));
@@ -48,6 +50,18 @@ public class Example {
 			System.out.println("Okunan hede: " + line);
 
 		}
+		
 	}
-
+	public static void writer(String file, List<Page> pages)
+            throws IOException {
+        FileWriter writer = new FileWriter(file + ".txt");
+        int size = pages.size();
+        for (int i=0;i<size;i++) {
+            String str = pages.get(i).toString();
+            writer.write(str);
+            if(i < size-1)//This prevent creating a blank like at the end of the file**
+                writer.write("\n");
+        }
+        writer.close();
+    }
 }
